@@ -22,12 +22,23 @@ app.set('ver motor', '.hbs');
 // Middleware ? 
 app.use(morgan('dev'));
 
+// mejoras a futuro ?
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // Variables globales
+app.use((req, res, next) => {
+    next();
+});
 
 // Routes
-app.use(require('./routes/'));
+app.use(require('./routes/index'));
+app.use(require('./routes/autenticacion'));
+app.use('/links', require('./routes/links'));
+
 
 // Public
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Empezar con el servidor
 

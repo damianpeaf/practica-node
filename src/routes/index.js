@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
-    res.send('che pibe');
+    res.send('hola pibe');
 
 });
 

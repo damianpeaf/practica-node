@@ -9,7 +9,7 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-    res.send('recibido')
+    // res.send('recibido')
 
     const { title, url, description } = req.body;
     const newLink = {
@@ -20,6 +20,17 @@ router.post('/add', async (req, res) => {
     };
 
     await pool.query('INSERT INTO links set ?', [newLink]);
+
+    res.redirect('/links');
+
+})
+
+
+router.get('/', async (req, res) => {
+    const links = await pool.query('SELECT * FROM links');
+    res.render('links/list', { links })
+
+    console.log({ links })
 
 })
 

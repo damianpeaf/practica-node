@@ -16,8 +16,7 @@ app.engine('.hbs', exphbs({
     extname: '.hbs',
     helpers: require('./lib/handlebars')
 }))
-
-app.set('ver motor', '.hbs');
+app.set('view engine', '.hbs');
 
 // Middleware ? 
 app.use(morgan('dev'));
